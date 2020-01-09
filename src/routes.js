@@ -11,9 +11,9 @@ import Sheduler from "./pages/Sheduler";
 const Routes = createAppContainer(
   createStackNavigator(
     {
+      Dashboard: Dashboard,
       Main: Main,
       Sheduler: Sheduler,
-      Dashboard: Dashboard,
       Edit: Edit,
       Delete: Delete,
       Mail: Mail
