@@ -1,19 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
-  Image,
   StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
-  AsyncStorage
+  AsyncStorage,
+  KeyboardAvoidingView
 } from "react-native";
 
 import api from "../services/api";
 
-import Button from "../components/Button";
-
-import logo from "../assets/logo.png";
+import Header from "../components/Header";
 
 export default function Main({ navigation }) {
   const [telefone, setTelefone] = useState("");
@@ -40,12 +38,19 @@ export default function Main({ navigation }) {
 
     navigation.navigate("Sheduler");
   }
+  async function handleSheduler() {
+    navigation.navigate("Main");
+  }
+  async function handleDashboard() {
+    navigation.navigate("Dashboard");
+  }
 
   return (
-    <View style={styles.container}>
-      <Image source={logo} />
-      <Button />
-      <Text style={styles.label}>Portab Manager</Text>
+    <KeyboardAvoidingView behavior="padding" style={styles.container}>
+      <Header
+        handleSheduler={handleSheduler}
+        handleDashboard={handleDashboard}
+      />
       <View style={styles.form}>
         <Text style={styles.label}>Nº do telefone</Text>
         <TextInput
@@ -62,7 +67,7 @@ export default function Main({ navigation }) {
         </TouchableOpacity>
       </View>
       <Text style={styles.error}>{error}</Text>
-    </View>
+    </KeyboardAvoidingView>
   );
 }
 
@@ -76,11 +81,6 @@ const styles = StyleSheet.create({
     alignSelf: "stretch",
     paddingHorizontal: 30,
     marginTop: 10
-  },
-  label: {
-    fontWeight: "bold",
-    marginTop: 10,
-    color: "#153486"
   },
   input: {
     borderWidth: 1,
