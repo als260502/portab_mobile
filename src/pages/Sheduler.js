@@ -8,15 +8,17 @@ import {
   AsyncStorage
 } from "react-native";
 
-import Datepicker from "react-native-datepicker";
+import DatePicker from "../components/DateTimePicker";
 import Header from "../components/Header";
 import Actions from "../components/Actions";
 import Loading from "../components/Loading";
 
 import api from "../services/api";
 
+
 export default function Sheduler({ navigation }) {
-  const [dataHora, setDataHora] = useState();
+  const [dataHora, setDataHora] = useState('');
+  const [hora, setHora] = useState('');
   const [codigo, setCodigo] = useState("");
   const [telefone, setTelefone] = useState("");
   const [numero, setNumero] = useState("");
@@ -33,14 +35,30 @@ export default function Sheduler({ navigation }) {
     AsyncStorage.getItem("numero").then(num => {
       setNumero(num);
     });
-  }, []);
+  });
+
+  const setDate = (event, date) => {
+    const resultado = new Date(date)
+    const mData = `${resultado.getFullYear()}-${resultado.getMonth() + 1}-${resultado.getDate()}`;
+    const mHora = `${resultado.getHours()}:${resultado.getMinutes()}`
+
+    const d = new Date()
+    const dataAtual = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
+    console.log(mData, dataAtual)
+    if (mData != dataAtual) {
+      setDataHora(`${mData}`);
+    }
+    setHora(mHora)
+
+  }
 
   const handleSheduler = () => navigation.navigate("Main");
   const handleDashboard = () => navigation.navigate("Dashboard");
 
   const handleAgendar = async () => {
-    const [data, hora] = dataHora.split(" ");
-    console.log(codigo, telefone, numero, data, hora);
+    const data = dataHora;
+    const mHora = hora;
+    console.log(codigo, telefone, numero, data, mHora);
     setLoagingIcon(true);
     const result = await api.post("/portabilidade/back/sheduler", {
       codigo,
@@ -74,17 +92,9 @@ export default function Sheduler({ navigation }) {
         <Text style={styles.label}>Nº Serviço</Text>
         <TextInput style={styles.input} value={numero} editable={false} />
 
-        <Text style={styles.label}>Data e hora</Text>
-        <Datepicker
-          mode="datetime"
-          date={dataHora}
-          style={styles.inputData}
-          format="DD-MM-YYYY HH:mm:ss"
-          is24Hour={true}
-          value={dataHora}
-          onDateChange={date => setDataHora(date)}
-        />
+        <DatePicker setDate={setDate} />
       </View>
+      {(dataHora) ? <Text style={styles.label} >{`${dataHora} ${hora}:00`}</Text> : <></>}
       <Actions action={handleAgendar} actionText="Agendar" />
       <Loading isIconAnimating={loadingIcon} />
     </KeyboardAvoidingView>
