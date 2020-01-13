@@ -9,8 +9,8 @@ import Sheduler from "./pages/Sheduler";
 
 const Routes = createAppContainer(
   createSwitchNavigator({
-    Main,
     Dashboard,
+    Main,
     Sheduler,
     Edit,
     Delete,
