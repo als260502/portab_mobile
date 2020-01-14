@@ -1,28 +1,28 @@
-import React, { useState, useEffect } from 'react';
-import { View, Button, Platform, StyleSheet } from 'react-native';
-import DateTimePicker from '@react-native-community/datetimepicker';
+import React, { useState, useEffect } from "react";
+import { View, Button, Platform, StyleSheet } from "react-native";
+import DateTimePicker from "@react-native-community/datetimepicker";
 
-export default function ({ setDate }) {
-  const [show, setShow] = useState(false)
-  const [state, setState] = useState(new Date())
-  const [mode, setMode] = useState('date')
+export default function({ setDate }) {
+  const [show, setShow] = useState(false);
+  const [state, setState] = useState(new Date());
+  const [mode, setMode] = useState("date");
 
   function isShow() {
-    setShow(true)
+    setShow(true);
   }
 
   const datepicker = () => {
-    setMode('date')
-    isShow()
-  }
+    setMode("date");
+    isShow();
+  };
 
   function timepicker() {
-    setMode('time')
-    isShow()
+    setMode("time");
+    isShow();
   }
   useEffect(() => {
-    setShow(false)
-  })
+    setShow(false);
+  }, []);
   return (
     <View>
       <View style={styles.button}>
@@ -31,28 +31,25 @@ export default function ({ setDate }) {
       <View style={styles.button}>
         <Button onPress={timepicker} title="Escolha a hora!" />
       </View>
-      {show && <DateTimePicker
-        value={state}
-        mode={mode}
-        is24Hour={true}
-        onChange={setDate}
-        style={styles.dt}
-        display="default"
-      />
-      }
+      {show && (
+        <DateTimePicker
+          value={state}
+          mode={mode}
+          is24Hour={true}
+          onChange={setDate}
+          style={styles.dt}
+          display="default"
+        />
+      )}
     </View>
   );
 }
-
-
 
 const styles = StyleSheet.create({
   dt: {
     marginBottom: 20
   },
   button: {
-    marginTop: 20,
-
+    marginTop: 20
   }
-})
-
+});

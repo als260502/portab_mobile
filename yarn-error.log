@@ -2,19 +2,19 @@ Arguments:
   C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add date-fns
 
 PATH: 
-  C:\Program Files\Git\cmd;C:\Python27\;C:\Python27\Scripts;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;C:\Program Files\ImageMagick-7.0.8-Q16;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\Java\jdk1.8.0_211\bin\;C:\Program Files\Java\jdk1.8.0_211\lib\;c:\xampp\php\;c:\xampp\mysql\bin\;C:\Program Files\Git\cmd;C:\Program Files (x86)\Yarn\bin\;C:\Users\als26\AppData\Local\Programs\Python\Python37-32\Scripts;C:\Users\als26\AppData\Local\Programs\Python\Python37-32;k:\Android\Sdk\tools;k:\Android\Sdk\platform-tools;C:\ProgramData\chocolatey\bin;C:\Program Files\nodejs\;C:\Program Files\Java\jdk1.8.0_211\bin;C:\Users\als26\AppData\Local\Programs\Python\Python37-32\Scripts\;C:\Users\als26\AppData\Local\Programs\Python\Python37-32\;C:\Users\als26\AppData\Local\Microsoft\WindowsApps;C:\Program Files\JetBrains\PhpStorm 2019.1.2\bin;;C:\Users\als26\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\als26\AppData\Local\Yarn\bin;C:\Users\als26\AppData\Roaming\npm;;C:\Program Files (x86)\SSH Communications Security\SSH Secure Shell
+  C:\Python27\;C:\Python27\Scripts;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\cygwin64\;C:\Program Files\PuTTY\;C:\Program Files\Java\jdk1.8.0_221\bin;C:\Program Files\Java\jdk1.8.0_221\lib;D:\Android\Sdk\platforms;D:\Android\Sdk\platform-tools;c:\xampp\mysql\bin;c:\xampp\php;C:\ProgramData\chocolatey\bin;d:\Programs\Git\cmd;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\nodejs\;C:\Program Files (x86)\Yarn\bin\;C:\Users\Andre\AppData\Local\Microsoft\WindowsApps;d:\Programs\SSH Communications Security\SSH Secure Shell;d:\Progras (x86)\Nmap;C:\Users\Andre\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Andre\AppData\Local\GitHubDesktop\bin;C:\Users\Andre\AppData\Roaming\npm;C:\Users\Andre\AppData\Local\Yarn\bin
 
 Yarn version: 
-  1.17.3
+  1.21.1
 
 Node version: 
-  12.8.0
+  12.14.1
 
 Platform: 
   win32 x64
 
 Trace: 
-  Error: EPERM: operation not permitted, unlink 'K:\projects\javascript\portabilidade\mobile\node_modules\@babel\generator\node_modules\.bin'
+  Error: EPERM: operation not permitted, unlink 'D:\projects\javascript\portabilidade\portab_mobile\node_modules\@babel\generator\node_modules\.bin'
 
 npm manifest: 
   {
