@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { View, StyleSheet } from "react-native";
 
 import Header from "../components/Header";
-import DataSource from "../components/DataSource";
+import List from "../components/List";
 import TableHeader from "../components/TableHeader";
 import Loading from "../components/Loading";
 
@@ -17,8 +17,9 @@ export default function Dashboard({ navigation }) {
   const handleSheduler = () => navigation.navigate("Main");
 
   useEffect(() => {
+    setLoagingIcon(true);
     async function load() {
-      setLoagingIcon(true);
+
       const response = await api.get(`/portabilidade/back/sheduler/${page}`, {
         headers: {
           itensPerPage,
@@ -26,19 +27,20 @@ export default function Dashboard({ navigation }) {
         }
       });
 
-      setFones(response.data.result);
+      setFones(response.data);
+      setLoagingIcon(false);
     }
 
     load();
-    console.log(fones);
-    setLoagingIcon(false);
+
+
   }, []);
 
   return (
     <View style={styles.dashboardContainer}>
       <Header handleSheduler={handleSheduler} />
-      <TableHeader />
-      <DataSource cod="12315" />;
+
+      <List list={fones} />
       <Loading isIconAnimating={loadingIcon} />
     </View>
   );

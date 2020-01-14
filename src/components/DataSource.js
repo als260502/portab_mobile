@@ -4,37 +4,16 @@ import { SafeAreaView, View, StyleSheet, Text } from "react-native";
 
 // import { Container } from './styles';
 
-export default function DataSource({ cod }) {
-  console.log(telefone.codigo);
+export default function DataSource({ list }) {
   return (
     <View style={styles.tableContainer}>
       <View style={styles.tableBody}>
         <View style={styles.cellRow}>
-          <View style={styles.cellBody}>
-            <Text>{cod}</Text>
-          </View>
-
-          <View style={styles.cellBody}>
-            <Text>{telefone.codigo}</Text>
-          </View>
-
-          <View style={styles.cellBody}>
-            <Text>{telefone.telefone}</Text>
-          </View>
-
-          <View style={styles.cellBody}>
-            <Text>{telefone.numero}</Text>
-          </View>
-
-          <View style={styles.cellBody}>
-            <Text>
-              {telefone.data} {telefone.hora}
-            </Text>
-          </View>
-
-          <View style={styles.cellBody}>
-            <Text>manage</Text>
-          </View>
+          {list.result.map(lista => {
+            <View style={styles.cellBody}>
+              <Text>{lista.cod}</Text>
+            </View>;
+          })}
         </View>
       </View>
     </View>
