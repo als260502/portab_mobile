@@ -1,6 +1,6 @@
 import React from "react";
 
-import {  
+import {
   View,
   StyleSheet,
   Text,
@@ -8,49 +8,47 @@ import {
   TouchableOpacity
 } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
-import { format, parseISO } from "date-fns";
 
-import Edit from "../assets/edit.png";
+import formatDateTime from '../utils/FormatDateTime'
 
+export default function List({ mail, del, edit, list }) {
 
-export default function List({edit, list}) {
-  
 
   return (
-    <View style={styles.container}> 
+    <View style={styles.container}>
       {list.map(t => (
-       
-       <View key={t.id} style={styles.tableCollumn}>
-         <View style={styles.cell}>
-           <Text style={styles.cellText}>{t.codigo}</Text>
-         </View>
-         <View style={styles.cell}>
-           <Text style={styles.cellText}>{t.telefone}</Text>
-         </View>
-         <View style={styles.cell}>
-           <Text style={styles.cellText}>{t.data}</Text>
-         </View>
-         <View style={styles.cell}>
+
+        <View key={t.id} style={styles.tableCollumn}>
+          <View style={styles.cell}>
+            <Text style={styles.cellText}>{t.codigo}</Text>
+          </View>
+          <View style={styles.cell}>
+            <Text style={styles.cellText}>{t.telefone}</Text>
+          </View>
+          <View style={styles.cell}>
+            <Text style={styles.cellText}>{formatDateTime(t.data, t.hora)}</Text>
+          </View>
+          <View style={styles.cell}>
             <View style={styles.cellButtons}>
-              
-             <TouchableOpacity onPress={(id)=>edit(t.id)} style={styles.button}>
-               <MaterialIcons name="edit" size={20} color={"#5faffa"} />
+
+              <TouchableOpacity onPress={(id) => edit(t.id)} style={styles.button}>
+                <MaterialIcons name="edit" size={20} color={"#5faffa"} />
               </TouchableOpacity>
-              
-             <TouchableOpacity  style={styles.button}>
-               <MaterialIcons name="mail" size={20} color={"#5faffa"} />
+
+              <TouchableOpacity onPress={(id) => mail(t.id)} style={styles.button}>
+                <MaterialIcons name="mail" size={20} color={"#5faffa"} />
               </TouchableOpacity>
-              
-             <TouchableOpacity style={styles.button}>
-               <MaterialIcons name="delete" size={20} color={"#5faffa"} />
+
+              <TouchableOpacity onPress={(id) => del(t.id)} style={styles.button}>
+                <MaterialIcons name="delete" size={20} color={"#5faffa"} />
               </TouchableOpacity>
-              
-           </View>
-         </View>
-       </View>         
-     ))}
-      
-      
+
+            </View>
+          </View>
+        </View>
+      ))}
+
+
     </View>
   );
 }
@@ -59,34 +57,34 @@ const styles = StyleSheet.create({
   container: {
     marginHorizontal: 10,
     marginTop: 15,
-    justifyContent: "center",  
-    
+    justifyContent: "center",
+
   },
-  tableCollumn: {  
-    width:'100%',
+  tableCollumn: {
+    width: '100%',
     flexDirection: "row",
     marginTop: 5,
-    backgroundColor: "#e0e0e0",    
+    backgroundColor: "#e0e0e0",
     borderBottomColor: "#000",
     borderBottomWidth: 1,
     alignItems: 'center',
     justifyContent: 'space-evenly',
   },
-  cell: {      
-    
+  cell: {
+
     justifyContent: 'space-evenly',
-    alignItems:'stretch'
+    alignItems: 'stretch'
   },
-  cellText: {    
+  cellText: {
     fontSize: 12,
-    padding:5
-  }, 
-  cellButtons: {
-    flexDirection:'row'
+    padding: 5
   },
-  button: {   
+  cellButtons: {
+    flexDirection: 'row'
+  },
+  button: {
     padding: 2
-    
+
   }
 
 });
