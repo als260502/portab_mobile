@@ -19,7 +19,6 @@ export default function Dashboard({ navigation }) {
   useEffect(() => {
     setLoagingIcon(true);
     async function load() {
-
       const response = await api.get(`/portabilidade/back/sheduler/${page}`, {
         headers: {
           itensPerPage,
@@ -27,20 +26,25 @@ export default function Dashboard({ navigation }) {
         }
       });
 
-      setFones(response.data);
+      setFones(response.data.result);
       setLoagingIcon(false);
     }
 
     load();
-
-
   }, []);
+
+  function handleEdit(id) {
+    console.log(id)
+    navigation.navigate("Edit", {
+      id
+    })
+  }
 
   return (
     <View style={styles.dashboardContainer}>
       <Header handleSheduler={handleSheduler} />
-
-      <List list={fones} />
+      
+      <List list={fones} edit={handleEdit} />
       <Loading isIconAnimating={loadingIcon} />
     </View>
   );
