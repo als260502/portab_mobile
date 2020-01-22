@@ -39,12 +39,24 @@ export default function Dashboard({ navigation }) {
       id
     })
   }
+  function handleMail(id) {
+    console.log(id)
+    navigation.navigate("Mail", {
+      id
+    })
+  }
+  function handleDel(id) {
+    console.log(id)
+    navigation.navigate("Delete", {
+      id
+    })
+  }
 
   return (
     <View style={styles.dashboardContainer}>
       <Header handleSheduler={handleSheduler} />
-      
-      <List list={fones} edit={handleEdit} />
+
+      <List list={fones} edit={handleEdit} mail={handleMail} del={handleDel} />
       <Loading isIconAnimating={loadingIcon} />
     </View>
   );
