@@ -12,13 +12,10 @@ export default function Actions({ action, actionText }) {
 }
 const styles = StyleSheet.create({
   actionConteiner: {
-    flexDirection: "row",
     alignSelf: "stretch",
     justifyContent: "center"
   },
   button: {
-    marginTop: 20,
-    flex: 1,
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 2,

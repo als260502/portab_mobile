@@ -2,10 +2,10 @@ Arguments:
   C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add date-fns
 
 PATH: 
-  C:\Python27\;C:\Python27\Scripts;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\cygwin64\;C:\Program Files\PuTTY\;C:\Program Files\Java\jdk1.8.0_221\bin;C:\Program Files\Java\jdk1.8.0_221\lib;D:\Android\Sdk\platforms;D:\Android\Sdk\platform-tools;c:\xampp\mysql\bin;c:\xampp\php;C:\ProgramData\chocolatey\bin;d:\Programs\Git\cmd;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\nodejs\;C:\Program Files (x86)\Yarn\bin\;C:\Users\Andre\AppData\Local\Microsoft\WindowsApps;d:\Programs\SSH Communications Security\SSH Secure Shell;d:\Progras (x86)\Nmap;C:\Users\Andre\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Andre\AppData\Local\GitHubDesktop\bin;C:\Users\Andre\AppData\Roaming\npm;C:\Users\Andre\AppData\Local\Yarn\bin
+  C:\Python27\;C:\Python27\Scripts;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;C:\Program Files\ImageMagick-7.0.8-Q16;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\Java\jdk1.8.0_211\bin\;C:\Program Files\Java\jdk1.8.0_211\lib\;c:\xampp\php\;c:\xampp\mysql\bin\;C:\Program Files\Git\cmd;C:\Program Files (x86)\Yarn\bin\;C:\Users\als26\AppData\Local\Programs\Python\Python37-32\Scripts;C:\Users\als26\AppData\Local\Programs\Python\Python37-32;k:\Android\Sdk\tools;k:\Android\Sdk\platform-tools;C:\ProgramData\chocolatey\bin;C:\Program Files\Java\jdk1.8.0_211\bin;C:\Program Files\nodejs\;C:\Users\als26\AppData\Local\Programs\Python\Python37-32\Scripts\;C:\Users\als26\AppData\Local\Programs\Python\Python37-32\;C:\Users\als26\AppData\Local\Microsoft\WindowsApps;C:\Program Files\JetBrains\PhpStorm 2019.1.2\bin;;C:\Users\als26\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\als26\AppData\Local\Yarn\bin;;C:\Program Files (x86)\SSH Communications Security\SSH Secure Shell;C:\Users\als26\AppData\Roaming\npm
 
 Yarn version: 
-  1.21.1
+  1.17.3
 
 Node version: 
   12.14.1
@@ -14,7 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: EPERM: operation not permitted, unlink 'D:\projects\javascript\portabilidade\portab_mobile\node_modules\@babel\generator\node_modules\.bin'
+  Error: EPERM: operation not permitted, unlink 'K:\projects\javascript\portabilidade\mobile\node_modules\@babel\generator\node_modules\.bin'
 
 npm manifest: 
   {
@@ -35,6 +35,7 @@ npm manifest:
       "react-dom": "~16.9.0",
       "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz",
       "react-native-gesture-handler": "~1.5.0",
+      "react-native-modern-datepicker": "^1.0.0-beta.7",
       "react-native-reanimated": "~1.4.0",
       "react-native-safe-area-context": "0.6.0",
       "react-native-screens": "2.0.0-alpha.12",
@@ -2983,6 +2984,11 @@ Lockfile:
       node-fetch "^1.0.1"
       whatwg-fetch ">=0.10.0"
   
+  jalaali-js@^1.1.0:
+    version "1.1.0"
+    resolved "https://registry.yarnpkg.com/jalaali-js/-/jalaali-js-1.1.0.tgz#f0e942049273d11f7298a992356fc36ce2784863"
+    integrity sha512-eznOFGRtHb0ttHkHf8pVYPVfKJdbOqutTwcQYACbv91Q2NiYgnM5Z6+NN/8FMAhuMDAXAmeAG9+UBzqVKdA4cg==
+  
   jest-get-type@^24.9.0:
     version "24.9.0"
     resolved "https://registry.yarnpkg.com/jest-get-type/-/jest-get-type-24.9.0.tgz#1684a0c8a50f2e4901b6644ae861f579eed2ef0e"
@@ -3663,6 +3669,28 @@ Lockfile:
     dependencies:
       minimist "0.0.8"
   
+  moment-jalaali@^0.8.3:
+    version "0.8.3"
+    resolved "https://registry.yarnpkg.com/moment-jalaali/-/moment-jalaali-0.8.3.tgz#93d5de9c274be0221fabd3c3f2b7efc3c51e9016"
+    integrity sha512-FjFjbqHnm9JB5AbcBqPtJ82I1WgjUupbjhKhd513ZkWBcbyQuq0IcEPYSdZ7EMgCYFFrE/W24vs1C2IpSqWuyg==
+    dependencies:
+      jalaali-js "^1.1.0"
+      moment "^2.22.2"
+      moment-timezone "^0.5.21"
+      rimraf "^2.6.2"
+  
+  moment-timezone@^0.5.21:
+    version "0.5.27"
+    resolved "https://registry.yarnpkg.com/moment-timezone/-/moment-timezone-0.5.27.tgz#73adec8139b6fe30452e78f210f27b1f346b8877"
+    integrity sha512-EIKQs7h5sAsjhPCqN6ggx6cEbs94GK050254TIJySD1bzoM5JTYDwAU1IoVOeTOL6Gm27kYJ51/uuvq1kIlrbw==
+    dependencies:
+      moment ">= 2.9.0"
+  
+  "moment@>= 2.9.0", moment@^2.22.2:
+    version "2.24.0"
+    resolved "https://registry.yarnpkg.com/moment/-/moment-2.24.0.tgz#0d055d53f5052aa653c9f6eb68bb5d12bf5c2b5b"
+    integrity sha512-bV7f+6l2QigeBBZSM/6yTNq4P2fNpSWj/0e7jQcy87A8e7o2nAfP/34/2ky5Vw4B9S446EtIhodAzkFCcR4dQg==
+  
   morgan@^1.9.0:
     version "1.9.1"
     resolved "https://registry.yarnpkg.com/morgan/-/morgan-1.9.1.tgz#0a8d16734a1d9afbc824b99df87e738e58e2da59"
@@ -4246,6 +4274,14 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.2.1.tgz#645e2ffbbb49e80844bb4cbbe34a126fda1e6772"
     integrity sha512-/VbpIEp8tSNNHIvstuA3Swx610whci1Zpc9mqNkqn14DkMbw+ORviln2u0XyHG1kPvvwTNGZY6QpeFwxYaSdbQ==
   
+  react-native-modern-datepicker@^1.0.0-beta.7:
+    version "1.0.0-beta.7"
+    resolved "https://registry.yarnpkg.com/react-native-modern-datepicker/-/react-native-modern-datepicker-1.0.0-beta.7.tgz#5ef41efc619ae69c7a34afe053d0a0e23d3bb615"
+    integrity sha512-d3Ll6I/uzHhauK9rRTdmD9xchyGh/DyvkMb47Lrt5NiARnITfXeKdZaW0c1474x/PeIWU3lBQVUKLW8cjPHPRQ==
+    dependencies:
+      moment-jalaali "^0.8.3"
+      prop-types "^15.7.2"
+  
   react-native-reanimated@~1.4.0:
     version "1.4.0"
     resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-1.4.0.tgz#7f1acbf9be08492d834f512700570978052be2f9"
@@ -4518,7 +4554,7 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/ret/-/ret-0.1.15.tgz#b8a4825d5bdb1fc3f6f53c2bc33f81388681c7bc"
     integrity sha512-TTlYpa+OL+vMMNG24xSlQGEJ3B/RzEfUlLct7b5G/ytav+wPrplCpVMFuwzXbkecJrb6IYo1iFb0S9v37754mg==
   
-  rimraf@^2.5.4:
+  rimraf@^2.5.4, rimraf@^2.6.2:
     version "2.7.1"
     resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.7.1.tgz#35797f13a7fdadc566142c29d4f07ccad483e3ec"
     integrity sha512-uWjbaKIK3T1OSVptzX7Nl6PvQ3qAGtKEtVRjRuazjfL3Bx5eI409VZSqgND+4UNnmzLVdPj9FqFJNPqBZFve4w==
