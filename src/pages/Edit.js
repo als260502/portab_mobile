@@ -1,28 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TextInput } from 'react-native';
+import { View, Text, StyleSheet, TextInput, ScrollView } from 'react-native';
 
 import api from '../services/api'
 import formatDateTime from '../utils/FormatDateTime'
 
 import Header from '../components/Header'
-import DatePicker from '../components/DateTimePicker'
 import Actions from '../components/Actions'
+import DatePicker from 'react-native-modern-datepicker'
 
 
 export default function Edit({ navigation }) {
-  const [dataHora, setDataHora] = useState('');
-  const [hora, setHora] = useState('');
+  const [selectedDate, setSelectedDate] = useState(Date.now());
   const [telefone, setTelefone] = useState('')
   const [codigo, setCodigo] = useState('')
   const [numero, setNumero] = useState('')
   const [alerta, setAlerta] = useState("");
-  const [id, setId] = useState("9")
-  //const id = navigation.getParam("id")
+  const [id, setId] = useState('')
+
 
 
   useEffect(() => {
     async function getFoneData() {
-      const response = await api.get(`/portabilidade/back/dashboard/find/${'9'}`);
+      const response = await api.get(`/portabilidade/back/dashboard/find/${navigation.getParam("id")}`);
 
       const { msg, state } = response.data
 
@@ -35,35 +34,35 @@ export default function Edit({ navigation }) {
       setCodigo(codigo)
       setNumero(numero)
       setTelefone(telefone)
-      setDataHora(data)
-      setHora(hora)
     }
     getFoneData();
   });
 
 
+  async function handleEdit() {
+    console.log(selectedDate)
+    setAlerta("");
 
-  const setDate = (event, date) => {
-    const resultado = new Date(date)
-    const mData = `${resultado.getFullYear()}-${resultado.getMonth() + 1}-${resultado.getDate()}`;
-    const mHora = `${resultado.getHours()}:${resultado.getMinutes()}`
+    const [data, hora] = selectedDate.split(" ")
 
-    const d = new Date()
-    const dataAtual = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
-    if (mData != dataAtual) {
-      setDataHora(`${mData}`);
+    const response = await api.put("portabilidade/back/dashboard/update", { id, data, hora });
+
+    const { msg, state } = response.data;
+
+    if (state === 0) {
+      setAlerta(msg);
+      return;
     }
-    setHora(mHora)
 
-  }
-  function handleEdit() {
+    setAlerta("Data de agendamento alterada com sucesso")
+    navigation.navigate("Dashboard");
 
   }
   const handleSheduler = () => navigation.navigate("Main")
   const handleDashboard = () => navigation.navigate("Dashboard")
   return (
 
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Header
         handleSheduler={handleSheduler}
         handleDashboard={handleDashboard}
@@ -90,13 +89,17 @@ export default function Edit({ navigation }) {
           style={styles.formInput}
           editable={false}
         />
+        <View style={styles.calendar}>
+          <DatePicker
+            onSelectedChange={date => setSelectedDate(date)}
+          />
+        </View>
 
-        <DatePicker setDate={setDate} />
+        <Actions action={handleEdit} actionText="Editar" />
       </View>
-      {(dataHora) ? <Text style={styles.dataHoraLabel} >{`${dataHora} ${hora}`}</Text> : <></>}
 
-      <Actions action={handleEdit} actionText="Editar" />
-    </View>
+    </ScrollView>
+
 
   )
 }
@@ -104,17 +107,16 @@ export default function Edit({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginHorizontal: 30,
-    justifyContent: "center",
-    marginTop: 20
 
   },
   viewForm: {
-
+    marginHorizontal: 30
   },
   formLabel: {
     fontWeight: 'bold',
-    fontSize: 16
+    fontSize: 16,
+
+
   },
   formInput: {
     borderColor: '#000',
@@ -130,10 +132,6 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     fontSize: 16,
     color: "#053890"
-  }
-
-
-
-
+  },
 })
 
