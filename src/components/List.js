@@ -13,12 +13,14 @@ import formatDateTime from '../utils/FormatDateTime'
 
 export default function List({ mail, del, edit, list }) {
 
-
   return (
     <View style={styles.container}>
       {list.map(t => (
 
-        <View key={t.id} style={styles.tableCollumn}>
+        <View
+          key={t.id}
+          style={(t.enviado == 0) ? styles.tableCollumn : styles.tableCollumnEnviado}
+        >
           <View style={styles.cell}>
             <Text style={styles.cellText}>{t.codigo}</Text>
           </View>
@@ -58,20 +60,17 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     marginTop: 15,
     justifyContent: "center",
-
   },
   tableCollumn: {
     width: '100%',
     flexDirection: "row",
     marginTop: 5,
-    backgroundColor: "#e0e0e0",
     borderBottomColor: "#000",
     borderBottomWidth: 1,
     alignItems: 'center',
     justifyContent: 'space-evenly',
   },
   cell: {
-
     justifyContent: 'space-evenly',
     alignItems: 'stretch'
   },
@@ -85,6 +84,16 @@ const styles = StyleSheet.create({
   button: {
     padding: 2
 
-  }
+  },
+  tableCollumnEnviado: {
+    width: '100%',
+    flexDirection: "row",
+    marginTop: 5,
+    backgroundColor: "#a3d6bd",
+    borderBottomColor: "#000",
+    borderBottomWidth: 1,
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+  },
 
 });

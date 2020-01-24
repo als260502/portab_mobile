@@ -13,7 +13,10 @@ export default function Actions({ action, actionText }) {
 const styles = StyleSheet.create({
   actionConteiner: {
     alignSelf: "stretch",
-    justifyContent: "center"
+    justifyContent: "center",
+    marginHorizontal: 30,
+    marginTop: 20
+
   },
   button: {
     alignItems: "center",

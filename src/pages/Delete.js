@@ -1,10 +1,96 @@
-import React from 'react';
-import { View } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, StyleSheet, TextInput, ScrollView } from 'react-native';
+
+import api from '../services/api'
+
+import Header from '../components/Header'
+import Actions from '../components/Actions'
+
+export default function Delete({ navigation }) {
+  const [telefone, setTelefone] = useState('')
+  const [codigo, setCodigo] = useState('')
+  const [alerta, setAlerta] = useState("");
+  const [id, setId] = useState('')
 
 
-export default function Delete() {
+
+  useEffect(() => {
+    console.log(navigation.getParam("id"))
+    async function getFoneData() {
+      const response = await api.get(`/portabilidade/back/dashboard/find/${navigation.getParam("id")}`);
+
+      const { msg, state } = response.data
+      if (state === 0) {
+        setAlerta(msg)
+        return
+      }
+      const { id, codigo, telefone } = response.data
+      setId(id)
+      setCodigo(codigo)
+      setTelefone(telefone)
+    }
+    getFoneData();
+  });
+
+
+  async function handleDelete() {
+    setAlerta("");
+    const del = await api.delete(`/portabilidade/back/dashboard/delete/${id}`)
+    const { msg } = del.data
+    navigation.navigate("Dashboard")
+  }
+  const handleSheduler = () => navigation.navigate("Main")
+  const handleDashboard = () => navigation.navigate("Dashboard")
   return (
-    <View></View>
+
+    <ScrollView style={styles.container}>
+      <Header
+        handleSheduler={handleSheduler}
+        handleDashboard={handleDashboard}
+      />
+
+      <View style={styles.viewForm}>
+        <Text style={styles.formLabel}>Codigo do cliente</Text>
+        <TextInput
+          value={String(codigo)}
+          style={styles.formInput}
+          editable={false}
+        />
+
+        <Text style={styles.formLabel}>Numero do telefone</Text>
+        <TextInput
+          style={styles.formInput}
+          editable={false}
+          value={String(telefone)}
+        />
+      </View>
+      <Actions action={handleDelete} actionText="Apagar Registro" />
+
+    </ScrollView>
+
+
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  viewForm: {
+    marginHorizontal: 30
+  },
+  formLabel: {
+    fontWeight: 'bold',
+    fontSize: 16,
+  },
+  formInput: {
+    borderColor: '#000',
+    borderWidth: 1,
+    marginVertical: 5,
+    paddingHorizontal: 10,
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: "#79b0a2"
+  },
+})
 

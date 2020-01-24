@@ -3,7 +3,6 @@ import { View, StyleSheet } from "react-native";
 
 import Header from "../components/Header";
 import List from "../components/List";
-import TableHeader from "../components/TableHeader";
 import Loading from "../components/Loading";
 
 import api from "../services/api";
